@@ -28,7 +28,7 @@ defmodule Instream.Query.Headers do
       []
 
       iex> assemble_auth(username: "user", password: "pass")
-      [{"Authorization", "Basic dXNlcjpwYXNz"}]
+      [{"Authorization", "Basic " <> Base.encode64("user:pass")}]
   """
   @spec assemble_auth(Keyword.t()) :: [{binary, binary}]
   def assemble_auth(nil), do: []

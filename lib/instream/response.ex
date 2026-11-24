@@ -43,8 +43,8 @@ defmodule Instream.Response do
   """
   @spec parse_version(any) :: String.t() | :error
   def parse_version({:ok, 204, headers}) do
-    case List.keyfind(headers, "X-Influxdb-Version", 0) do
-      {"X-Influxdb-Version", version} -> version
+    case Enum.find(headers, fn {name, _} -> String.downcase(name) == "x-influxdb-version" end) do
+      {_name, version} -> version
       _ -> "unknown"
     end
   end

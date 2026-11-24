@@ -45,7 +45,7 @@ defmodule Instream.MixProject do
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:excoveralls, "~> 0.13.0", only: :test, runtime: false},
-      {:hackney, "~> 1.1"},
+      {:hackney, "~> 4.12"},
       {:influxql, "~> 0.2.0"},
       {:jason, "~> 1.0"},
       {:poolboy, "~> 1.5"},

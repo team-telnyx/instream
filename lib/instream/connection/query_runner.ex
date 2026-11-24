@@ -71,8 +71,7 @@ defmodule Instream.Connection.QueryRunner do
         :hackney.request(method, url, headers, body, http_opts(config, opts))
       end)
 
-    with {:ok, status, headers, client} <- response,
-         {:ok, body} <- :hackney.body(client) do
+    with {:ok, status, headers, body} <- response do
       result = Response.maybe_parse({status, headers, body}, opts)
 
       if false != opts[:log] do

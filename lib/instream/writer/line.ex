@@ -24,8 +24,7 @@ defmodule Instream.Writer.Line do
     http_opts =
       Keyword.merge(Keyword.get(config, :http_opts, []), Keyword.get(opts, :http_opts, []))
 
-    with {:ok, status, headers, client} <- :hackney.post(url, headers, body, http_opts),
-         {:ok, body} <- :hackney.body(client) do
+    with {:ok, status, headers, body} <- :hackney.post(url, headers, body, http_opts) do
       {status, headers, body}
     else
       {:error, _} = error -> error
